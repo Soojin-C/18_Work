@@ -1,3 +1,4 @@
+#include "pipe_networking.h"
 /*=========================
   server_handshake
   args: int * to_client
@@ -25,7 +26,7 @@ int server_handshake(int *to_client) {
     int writing = write(*to_client, ACK, HANDSHAKE_BUFFER_SIZE);
 
     // get response from client
-    reading = read(receive_msg, message, HANDSHAKE_BUFFER_SIZE);
+    reading_pipe = read(receive_msg, message, HANDSHAKE_BUFFER_SIZE);
     printf("message: %s\n", message);
     // return fd to wkp
     return receive_msg;
